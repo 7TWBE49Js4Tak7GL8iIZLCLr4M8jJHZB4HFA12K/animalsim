@@ -2,7 +2,7 @@ local DiscordLib = loadstring(game:HttpGet"https://raw.githubusercontent.com/daw
 
 local win = DiscordLib:Window("Soggy Hub ")
 
-local serv = win:Server("Animal Simulator", "")
+local serv = win:Server("Animal Simulator V1.1", "")
 
 local btns = serv:Channel("Main")
 
@@ -12,11 +12,11 @@ btns:Toggle("Chest Farm / Infinite Levels",false, function(bool)
     getgenv().chestfarm = bool
     
     while chestfarm do 
-        wait(0.2)
+        wait(2)
         for i,v in pairs(game:GetService("Workspace").Treasures:GetChildren()) do 
             wait()
             if v.ClassName == "MeshPart" then 
-                hum.CFrame = v.CFrame
+                game:GetService("TweenService"):Create(game.Players.LocalPlayer.Character.HumanoidRootPart, TweenInfo.new(1, Enum.EasingStyle.Linear, Enum.EasingDirection.InOut),{CFrame = v.CFrame}):Play()
                 print(bool)
             end
         end
@@ -29,11 +29,11 @@ btns:Toggle("Get All Skins Farm",false, function(bool)
     getgenv().skinfarm = bool
     
     while skinfarm do 
-        wait(0.2)
+        wait(2)
         for i,v in pairs(game:GetService("Workspace").Treasures:GetChildren()) do 
             wait()
             if v.ClassName == "MeshPart" then 
-                hum.CFrame = v.CFrame
+                game:GetService("TweenService"):Create(game.Players.LocalPlayer.Character.HumanoidRootPart, TweenInfo.new(1, Enum.EasingStyle.Linear, Enum.EasingDirection.InOut),{CFrame = v.CFrame}):Play()
                 print(bool)
             end
         end
