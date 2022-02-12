@@ -1,0 +1,100 @@
+local DiscordLib = loadstring(game:HttpGet"https://raw.githubusercontent.com/dawid-scripts/UI-Libs/main/discord%20lib.txt")()
+
+local win = DiscordLib:Window("Soggy Hub ")
+
+local serv = win:Server("Animal Simulator", "")
+
+local btns = serv:Channel("Main")
+
+local hum = game.Players.LocalPlayer.Character.HumanoidRootPart
+
+btns:Toggle("Chest Farm / Infinite Levels",false, function(bool)
+    getgenv().chestfarm = bool
+    
+    while chestfarm do 
+        wait(0.2)
+        for i,v in pairs(game:GetService("Workspace").Treasures:GetChildren()) do 
+            wait()
+            if v.ClassName == "MeshPart" then 
+                hum.CFrame = v.CFrame
+                print(bool)
+            end
+        end
+    end
+end)
+
+btns:Seperator()
+
+btns:Toggle("Get All Skins Farm",false, function(bool)
+    getgenv().skinfarm = bool
+    
+    while skinfarm do 
+        wait(0.2)
+        for i,v in pairs(game:GetService("Workspace").Treasures:GetChildren()) do 
+            wait()
+            if v.ClassName == "MeshPart" then 
+                hum.CFrame = v.CFrame
+                print(bool)
+            end
+        end
+    end
+end)
+
+btns:Seperator()
+
+btns:Toggle("Damage Everyone",false, function(bool)
+         for i,v in pairs(game.Players:GetChildren()) do
+           for i,p in pairs(game.Workspace:GetChildren()) do
+               if p.Name == v.Name and p.Name ~= game.Players.LocalPlayer.Name then
+               game:GetService("ReplicatedStorage").jdskhfsIIIllliiIIIdchgdIiIIIlIlIli:FireServer(p.Humanoid,1)
+            end
+        end
+    end
+end)
+
+local btns = serv:Channel("Player")
+
+local sldr = btns:Slider("Walkspeed!", 20, 200, 0, function(t)
+game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = t
+end)
+
+btns:Seperator()
+
+local sldr = btns:Slider("JumpPower!", 20, 500, 0, function(t)
+game.Players.LocalPlayer.Character.Humanoid.JumpPower = t
+end)
+
+local btns = serv:Channel("Important!")
+
+btns:Button("Discord Server", function()
+    DiscordLib:Notification("Notification", "You will be prompted a discord invite.", "Okay!")
+        	local http = game:GetService('HttpService') 
+	if toClipboard then
+		toClipboard('https://discord.gg/DMTKwpEWnR')
+	else
+	end
+	local req = syn and syn.request or http and http.request or http_request or fluxus and fluxus.request or getgenv().request or request
+	if req then
+		req({
+			Url = 'http://127.0.0.1:6463/rpc?v=1',
+			Method = 'POST',
+			Headers = {
+				['Content-Type'] = 'application/json',
+				Origin = 'https://discord.com'
+			},
+			Body = http:JSONEncode({
+				cmd = 'INVITE_BROWSER',
+				nonce = http:GenerateGUID(false),
+				args = {code = 'GYrTQEryum'}
+			})
+		})
+	end
+end)
+
+btns:Button("Owner + Scripter", function()
+    if setclipboard then 
+        setclipboard("sunken#0001")
+    elseif toClipboard then 
+        toClipboard("sunken#0001")
+    end
+end)
